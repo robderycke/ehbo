@@ -1,0 +1,95 @@
+// 1. SETTINGS
+$primary-color: #2563eb;
+$secondary-color: #64748b;
+$tertiary-color: #dc2626;
+$dark-color: #0f172a;
+$light-bg: #f8fafc;
+$font-heading: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+$font-body: 'Inter', -apple-system, sans-serif;
+
+// 2. TOOLS
+@mixin transition-standard {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+// 3. GENERIC
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: $font-body;
+    color: $dark-color;
+    line-height: 1.6;
+    background-color: white;
+}
+
+// 6. COMPONENTS
+.c-hero {
+    min-height: 90vh;
+    background-size: cover !important;
+    background-position: center !important;
+}
+
+.c-card {
+    @include transition-standard;
+    border-radius: 1.25rem;
+    
+    &:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04) !important;
+    }
+}
+
+.c-letter {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    background-color: $primary-color;
+    color: white;
+    border-radius: 0.5rem;
+}
+
+.c-btn-top {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    width: 3.5rem;
+    height: 3.5rem;
+    display: none;
+    z-index: 9999;
+    @include transition-standard;
+
+    &:hover {
+        transform: scale(1.1);
+    }
+}
+
+.c-accordion {
+    .accordion-button {
+        &:not(.collapsed) {
+            background-color: rgba($primary-color, 0.05);
+            color: $primary-color;
+            .c-letter {
+                background-color: $primary-color;
+            }
+        }
+        
+        &:focus {
+            box-shadow: none;
+            border-color: rgba($primary-color, 0.25);
+        }
+    }
+}
+
+// 7. UTILITIES
+.u-fade-in {
+    animation: fadeIn 1s ease-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
